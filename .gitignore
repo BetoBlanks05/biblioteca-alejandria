@@ -6,3 +6,11 @@
 !/dump/.gitkeep
 .DS_Store
 !/www/.gitkeep
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+venv/
+.venv/
