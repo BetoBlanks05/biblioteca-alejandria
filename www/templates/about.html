@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+    /* Estilo global */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-image: url("{{ url_for('static', filename='images/start.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* Barra de navegación más translúcida */
+    .navbar-custom {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 12px;
+        background-color: rgba(0, 0, 0, 0.15); /* Más transparente */
+        backdrop-filter: blur(5px); /* Efecto sutil de desenfoque */
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .navbar-brand {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 10px 15px;
+        transition: transform 0.2s ease-in-out, color 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+        transform: scale(1.08);
+        color: #ffda79; /* Un color sutil al pasar el mouse */
+    }
+
+    /* Caja de contenido con más transparencia */
+    .content-container {
+        max-width: 750px;
+        background: rgba(0, 0, 0, 0.2); /* Aún más translúcida */
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(6px);
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .content-container h1 {
+        font-size: 3.8rem;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .content-container p {
+        font-size: 2rem;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+    }
+
+    /* Animación suave de entrada */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-15px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- Barra de navegación (Ahora más translúcida) -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Alejandria</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('views.start') }}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('views.about') }}">Libros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('views.login') }}">Iniciar sesión</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Contenido principal mejorado -->
+<div class="content-container">
+    <h1>Biblioteca Alejandría</h1>
+    <p>Somos una biblioteca cuya misión es hacer que la gente pueda leer los mejores títulos que la literatura pueda alcanzar con una oferta increíble y la interactividad para recomendar tus cosas favoritas.</p>
+</div>
+
+{% endblock %}

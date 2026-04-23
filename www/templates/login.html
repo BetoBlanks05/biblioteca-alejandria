@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    body {
+        background-image: url("{{ url_for('static', filename='images/flores.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .navbar-custom {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 10px 20px;
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar-brand {
+        font-size: 2rem;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+    }
+
+    .navbar-nav {
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+    }
+
+    .nav-link:hover {
+        text-decoration: underline;
+    }
+
+    .login-container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        text-align: center;
+        
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .login-container h2 {
+        margin-bottom: 20px;
+        color: black;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn-login {
+        background: black;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .links {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .links a {
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .links a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="container-fluid">
+        <!-- Brand (Alejandria) alineado a la izquierda -->
+        <a class="navbar-brand" href="#">Alejandria</a>
+        <!-- Botón para colapsar en dispositivos móviles -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Contenedor de los botones alineados a la derecha -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <!-- Botón 1: Acerca de -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('views.start') }}">Inicio</a>
+                </li>
+                <!-- Botón 2: Iniciar sesión -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('views.about') }}">Acerca de</a>
+                </li>
+                <!-- Botón 3: Acerca de -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('views.login') }}">Iniciar sesión</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="login-container">
+    <h2>Te damos la bienvenida a Alejandria</h2>
+    <form method="POST" action="{{ url_for('views.login') }}">
+        <input type="email" class="form-control" name="correo" placeholder="Correo electrónico" required>
+        <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+        <button type="submit" class="btn-login">Iniciar sesión</button>
+    </form>
+    <div class="links">
+        <a href="{{ url_for('views.forgetpassw') }}">¿Olvidaste la contraseña?</a>
+        <a href="{{ url_for('views.registro') }}">Crear cuenta</a>
+    </div>
+</div>
+
+{% endblock %}

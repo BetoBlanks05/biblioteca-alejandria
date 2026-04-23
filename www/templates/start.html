@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    /* Estilo personalizado para la imagen de fondo */
+    body {
+        background-image: url("{{ url_for('static', filename='images/start.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: rgba(255, 255, 255, 0.79);
+    }
+    /* Estilo para la barra de navegación */
+    .navbar-custom {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente */
+        backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    }
+    .navbar-custom .container-fluid {
+        padding: 0;
+    }
+    /* Estilo para la marca (Alejandria) */
+    .navbar-brand {
+        font-size: 2rem; /* Aumenta el tamaño del texto */
+        font-weight: bold; /* Lo hace más grueso */
+    }
+    /* Estilo para los botones de navegación */
+    .navbar-nav .nav-link {
+        font-size: 1.2rem; /* Aumenta el tamaño de los enlaces */
+        font-weight: bold;
+        padding: 10px 15px; /* Añade más espacio alrededor */
+    }
+    /* Estilo para el título principal */
+    .text-center h1 {
+        font-size: 4rem; /* Aumenta el tamaño de la letra */
+        font-weight: bold;
+        color: white; /* Asegura que el texto sea visible */
+    }
+    /* Estilo para el subtítulo */
+    .text-center h2 {
+        font-size: 2.5rem; /* Aumenta el tamaño del subtítulo */
+        font-weight: bold; /* Peso de fuente más ligero */
+        color: whitesmoke; /* Asegura que el texto sea visible */
+    }
+</style>
+
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="container-fluid">
+        <!-- Brand (Alejandria) alineado a la izquierda -->
+        <a class="navbar-brand" href="#">Alejandria</a>
+        <!-- Botón para colapsar en dispositivos móviles -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Contenedor de los botones alineados a la derecha -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <!-- Botón 1: Acerca de -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('views.start') }}">Inicio</a>
+                </li>
+                <!-- Botón 2: Iniciar sesión -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('views.about') }}">Acerca de</a>
+                </li>
+                <!-- Botón 3: Acerca de -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('views.login') }}">Iniciar sesión</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Contenido principal -->
+<div class="text-center">
+    <h1>Biblioteca Alejandria</h1>
+    <h2>Cada día más quemada, creada por estudiantes de UVM sin paga :c</h2>
+</div>
+{% endblock %}

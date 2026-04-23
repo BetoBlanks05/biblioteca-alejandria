@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Comprar Libro</h2>
+    <form method="POST" action="{{ url_for('views.buy_book') }}">
+        <div class="mb-3">
+            <label for="book_id" class="form-label">ID del Libro</label>
+            <input type="text" class="form-control" id="book_id" name="book_id" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Comprar</button>
+    </form>
+</div>
+{% endblock %}
